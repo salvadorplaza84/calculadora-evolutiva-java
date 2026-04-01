@@ -3,12 +3,10 @@ package calculadora;
 import java.util.ArrayList;
 
 public class CalculadoraLogica {
-	private ArrayList<Operacion> historial;
-	private HistorialFichero historialFichero;
+	private HistorialBD historialBD;
 
 	public CalculadoraLogica() {
-		historialFichero = new HistorialFichero();
-		historial = historialFichero.cargarHistorial();
+		historialBD = new HistorialBD();
 	}
 
 	public double sumar(double num1, double num2) {
@@ -84,16 +82,11 @@ public class CalculadoraLogica {
 
 	public void guardarOperacion(String expresion, double resultado) {
 		Operacion operacion = new Operacion(expresion, formatearNumero(resultado));
-		historial.add(operacion);
-		historialFichero.guardarOperacion(operacion);
+		historialBD.guardarOperacion(operacion);
 	}
 
-	public ArrayList<Operacion> obtenerHistorial() {
-		return new ArrayList<>(historial);
-	}
-
-	public ArrayList<Operacion> obtenerHistorialDesdeFichero() {
-		return historialFichero.cargarHistorial();
+	public ArrayList<Operacion> obtenerHistorialBD() {
+		return historialBD.obtenerHistorial();
 	}
 
 	public String formatearNumero(double numero) {

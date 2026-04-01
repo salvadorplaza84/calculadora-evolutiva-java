@@ -1,12 +1,25 @@
 package calculadora;
 
 public class Operacion {
+	private int id;
 	private String expresion;
 	private String resultado;
+	private String fecha;
 
 	public Operacion(String expresion, String resultado) {
 		this.expresion = expresion;
 		this.resultado = resultado;
+	}
+
+	public Operacion(int id, String expresion, String resultado, String fecha) {
+		this.id = id;
+		this.expresion = expresion;
+		this.resultado = resultado;
+		this.fecha = fecha;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getExpresion() {
@@ -17,16 +30,8 @@ public class Operacion {
 		return resultado;
 	}
 
-	public static Operacion desdeLinea(String linea) {
-		int separador = linea.lastIndexOf(" = ");
-
-		if (separador == -1) {
-			return null;
-		}
-
-		String expresion = linea.substring(0, separador);
-		String resultado = linea.substring(separador + 3);
-		return new Operacion(expresion, resultado);
+	public String getFecha() {
+		return fecha;
 	}
 
 	@Override

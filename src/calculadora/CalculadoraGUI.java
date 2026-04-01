@@ -101,7 +101,7 @@ public class CalculadoraGUI {
 		igual = new JButton("=");
 		punto = new JButton(".");
 		borrar = new JButton("←");
-		historial = new JButton("Historial");
+		historial = new JButton("Ver historial");
 
 		estilizarBotonNumero(uno);
 		estilizarBotonNumero(dos);
@@ -169,7 +169,7 @@ public class CalculadoraGUI {
 		multiplica.addActionListener(e -> agregarOperador("*"));
 		divide.addActionListener(e -> agregarOperador("/"));
 		igual.addActionListener(e -> calcularResultado());
-		historial.addActionListener(e -> new HistorialVentana(logica.obtenerHistorialDesdeFichero()));
+		historial.addActionListener(e -> new HistorialVentana(logica.obtenerHistorialBD()));
 	}
 
 	private void borrarUltimoCaracter() {
