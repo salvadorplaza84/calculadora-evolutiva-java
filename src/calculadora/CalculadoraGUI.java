@@ -169,7 +169,7 @@ public class CalculadoraGUI {
 		multiplica.addActionListener(e -> agregarOperador("*"));
 		divide.addActionListener(e -> agregarOperador("/"));
 		igual.addActionListener(e -> calcularResultado());
-		historial.addActionListener(e -> new HistorialVentana(logica.obtenerHistorial()));
+		historial.addActionListener(e -> new HistorialVentana(logica.obtenerHistorialDesdeFichero()));
 	}
 
 	private void borrarUltimoCaracter() {

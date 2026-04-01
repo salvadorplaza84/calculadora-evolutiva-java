@@ -16,6 +16,7 @@ public class HistorialVentana {
 		JFrame ventanaHistorial = new JFrame("Historial");
 		ventanaHistorial.setSize(350, 400);
 		ventanaHistorial.setLocationRelativeTo(null);
+		ventanaHistorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		ventanaHistorial.getContentPane().setBackground(new Color(230, 230, 230));
 		ventanaHistorial.setLayout(new BorderLayout(10, 10));
 

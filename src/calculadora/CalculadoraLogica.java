@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class CalculadoraLogica {
 	private ArrayList<Operacion> historial;
+	private HistorialFichero historialFichero;
 
 	public CalculadoraLogica() {
-		historial = new ArrayList<>();
+		historialFichero = new HistorialFichero();
+		historial = historialFichero.cargarHistorial();
 	}
 
 	public double sumar(double num1, double num2) {
@@ -81,11 +83,17 @@ public class CalculadoraLogica {
 	}
 
 	public void guardarOperacion(String expresion, double resultado) {
-		historial.add(new Operacion(expresion, formatearNumero(resultado)));
+		Operacion operacion = new Operacion(expresion, formatearNumero(resultado));
+		historial.add(operacion);
+		historialFichero.guardarOperacion(operacion);
 	}
 
 	public ArrayList<Operacion> obtenerHistorial() {
 		return new ArrayList<>(historial);
+	}
+
+	public ArrayList<Operacion> obtenerHistorialDesdeFichero() {
+		return historialFichero.cargarHistorial();
 	}
 
 	public String formatearNumero(double numero) {

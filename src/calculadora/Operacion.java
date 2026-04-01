@@ -17,6 +17,18 @@ public class Operacion {
 		return resultado;
 	}
 
+	public static Operacion desdeLinea(String linea) {
+		int separador = linea.lastIndexOf(" = ");
+
+		if (separador == -1) {
+			return null;
+		}
+
+		String expresion = linea.substring(0, separador);
+		String resultado = linea.substring(separador + 3);
+		return new Operacion(expresion, resultado);
+	}
+
 	@Override
 	public String toString() {
 		return expresion + " = " + resultado;
