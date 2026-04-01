@@ -1,6 +1,13 @@
 package calculadora;
 
+import java.util.ArrayList;
+
 public class CalculadoraLogica {
+	private ArrayList<Operacion> historial;
+
+	public CalculadoraLogica() {
+		historial = new ArrayList<>();
+	}
 
 	public double sumar(double num1, double num2) {
 		return num1 + num2;
@@ -20,7 +27,6 @@ public class CalculadoraLogica {
 		} else {
 			throw new ArithmeticException("No se puede dividir entre 0");
 		}
-
 	}
 
 	public boolean esOperador(char c) {
@@ -72,5 +78,21 @@ public class CalculadoraLogica {
 		resultado = aplicarOperacion(resultado, ultimoNumero, operadorActual);
 
 		return resultado;
+	}
+
+	public void guardarOperacion(String expresion, double resultado) {
+		historial.add(new Operacion(expresion, formatearNumero(resultado)));
+	}
+
+	public ArrayList<Operacion> obtenerHistorial() {
+		return new ArrayList<>(historial);
+	}
+
+	public String formatearNumero(double numero) {
+		if (numero == (long) numero) {
+			return String.valueOf((long) numero);
+		}
+
+		return String.valueOf(numero);
 	}
 }
